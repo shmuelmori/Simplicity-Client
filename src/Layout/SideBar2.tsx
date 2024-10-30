@@ -101,7 +101,7 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
 
   return (
     <aside
-      className={`fixed top-14 z-20 -right-[300px] w-[250px] h-full bg-gray-700 text-white p-3 transform transition-transform duration-500 ease-in-out ${viewProjects ? 'translate-x-[-450px]' : ''
+      className={`fixed top-14 z-20 -right-[300px] w-[210px] sm:w-[250px]  h-full bg-gray-700 text-white p-3 transform transition-transform duration-500 ease-in-out ${viewProjects ? 'translate-x-[-450px]' : ''
         }`}
       style={{ zIndex: 999 }}
     >

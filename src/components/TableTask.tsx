@@ -180,7 +180,7 @@ export default function TableTask({ tasks }: Prop) {
                             <td className="px-2 min-w-[200px] py-2 flex items-center space-x-2 font-s relative">
                                 {activePopup === task._id + "_name" &&
                                     renderEditPopup(task._id, task.name, handleNameChange, "text")}
-                                <RiDraggable className="cursor-move" />
+                                <RiDraggable className="text-2xl cursor-move" />
                                 <span className="bg-transparent">
                                     {task.status === "COMPLETE" ? (
                                         <span className="text-[#2fb170] text-lg">

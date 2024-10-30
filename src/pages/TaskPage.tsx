@@ -32,12 +32,12 @@ export default function TaskPage() {
     };
 
     return (
-        <div className="w-full h-screen mt-9 sm:p-10 flex flex-col items-center dark:bg-gray-800">
+        <div className="w-full h-screen mt-14 sm:p-10 flex flex-col items-center dark:bg-gray-800">
             <div className="flex w-[80%] justify-center p-4 text-2xl font-bold text-gray-600 dark:text-white">
                 {tasks.length} Tasks active
             </div>
 
-            <div className="w-[90%] flex items-center justify-start mb-4 space-x-2 sm:space-x-4">
+            <div className="w-[90%] flex items-center justify-center mb-4 space-x-2 sm:space-x-4">
                 <div className="flex">
                     {tasks.length > 0 &&
                         <ButtonExport rout='/task/exportTaskList' _id={id} name={'Tasks'} />
@@ -48,7 +48,7 @@ export default function TaskPage() {
                     placeholder="Search..."
                     onChange={handleNewSearch}
                     required
-                    className="border rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
+                    className="border w-[40%] rounded-md p-2 focus:outline-none focus:ring focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
                 />
                 <button
                     className="flex items-center py-1 px-2 rounded-md border-2 bg-gray-300 hover:bg-blue-600 transition duration-300 hover:text-white text-[14px]  custom-text-size"
@@ -56,8 +56,6 @@ export default function TaskPage() {
                 >
                     <HiPlusSm /> Add task
                 </button>
-
-
             </div>
 
             {tasks.length > 0 && <TableTask tasks={tasks} />}

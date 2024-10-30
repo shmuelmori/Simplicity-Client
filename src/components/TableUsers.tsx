@@ -7,8 +7,6 @@ import DeleteUser from "./DeleteUser";
 import { AppDispatch } from "../redux/store";
 import { setUsers } from "../redux/slices/usersSlice";
 import { useDispatch } from "react-redux";
-import Loading from "./Loading";
-import UseUsers from "../hooks/UseUsers";
 
 type Sort = {
   key: keyof IUser | null;
@@ -21,7 +19,6 @@ type Prop = {
 
 const Table = ({ users }: Prop) => {
   const dispatch: AppDispatch = useDispatch();
-  const { loading } = UseUsers();
   const [popUpdateUser, setPopUpdateUser] = useState<boolean>(false);
   const [popDeleteUser, setPopDeleteUser] = useState<boolean>(false);
   const [selectedUser, setSelectedUser] = useState<IUser | null>(null);
@@ -46,13 +43,11 @@ const Table = ({ users }: Prop) => {
   };
 
   if (!users || users.length === 0) {
-    return <p className="mt-16 text-2xl dark:text-white">No users found.</p>;
+    return <p className="mt-16 text-3xl font-bold dark:text-white">No users found.</p>;
   }
 
-  if (loading) return <Loading />
-
   return (
-    <div className="w-full sm:w-[80%] overflow-x-auto mt-2">
+    <div className="sm:w-[80%] w-[95%] overflow-x-auto mt-2">
       <table className="min-w-[400px] w-[99%] text-center border-separate border-spacing-y-1">
         <thead>
           <tr className="bg-white dark:bg-gray-600 dark:text-white">
