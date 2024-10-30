@@ -52,7 +52,7 @@ const Table = ({ users }: Prop) => {
   if (loading) return <Loading />
 
   return (
-    <div className="w-[80%] overflow-x-auto mt-2">
+    <div className="w-full sm:w-[80%] overflow-x-auto mt-2">
       <table className="min-w-[400px] w-[99%] text-center border-separate border-spacing-y-1">
         <thead>
           <tr className="bg-white dark:bg-gray-600 dark:text-white">
