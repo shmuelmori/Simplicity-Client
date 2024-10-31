@@ -93,8 +93,8 @@ const Profile = () => {
                                     className="w-40 h-40 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-primary mt-10 sm:mt-2"
                                 />
                             ) : (
-                                <div className="w-24 h-24 rounded-full bg-primary flex items-center justify-center text-white text-2xl">
-                                    {user.firstName[0]}{user.lastName[0]}
+                                <div className="w-40 h-40 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-primary mt-10 sm:mt-2">
+                                    👤
                                 </div>
                             )}
                         </motion.div>
