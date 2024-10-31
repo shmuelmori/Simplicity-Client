@@ -115,32 +115,27 @@ export default function TableTask({ tasks }: Prop) {
 
     const [draggedItem, setDraggedItem] = useState<ITask | null>(null);
 
-    // Handle Drag Start
     const handleDragStart = (e: React.DragEvent<HTMLTableRowElement>, task: ITask) => {
         setDraggedItem(task);
         e.currentTarget.classList.add('opacity-50');
     };
 
-    // Handle Drag End
     const handleDragEnd = (e: React.DragEvent<HTMLTableRowElement>) => {
         e.currentTarget.classList.remove('opacity-50');
         setDraggedItem(null);
     };
 
-    // Handle Drag Over
     const handleDragOver = (e: React.DragEvent<HTMLTableRowElement>) => {
         e.preventDefault();
         const targetElement = e.currentTarget;
         targetElement.style.borderBottom = '2px solid blue';
     };
 
-    // Handle Drag Leave
     const handleDragLive = (e: React.DragEvent<HTMLTableRowElement>) => {
         const targetElement = e.currentTarget;
         targetElement.style.borderBottom = '1px solid #F3F4F6';
     };
 
-    // Handle Drop
     const handleDrop = (e: React.DragEvent<HTMLTableRowElement>, targetTask: ITask) => {
         e.preventDefault();
 
@@ -158,22 +153,6 @@ export default function TableTask({ tasks }: Prop) {
         targetElement.style.borderBottom = '1px solid #F3F4F6';
     };
 
-    // Touch Event Handlers
-    const handleTouchStart = (e: React.TouchEvent<HTMLTableRowElement>, task: ITask) => {
-        handleDragStart(e as any, task); // Cast for compatibility
-    };
-
-    const handleTouchMove = (e: React.TouchEvent<HTMLTableRowElement>) => {
-        // This can be used to provide visual feedback on mobile if needed.
-        e.preventDefault();
-    };
-
-    const handleTouchEnd = (e: React.TouchEvent<HTMLTableRowElement>, targetTask: ITask) => {
-        handleDrop(e as any, targetTask); // Cast for compatibility
-        setDraggedItem(null); // Reset dragged item
-    };
-
-    // Render
     return (
         <div className="w-[90%] overflow-x-auto mt-2">
             <table className="min-w-[400px] w-[99%] sm:w-[90%] overflow-x-auto border-spacing-y-2 text-[15px]">
@@ -186,7 +165,7 @@ export default function TableTask({ tasks }: Prop) {
                         <th className="p-2"></th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody className="">
                     {tasks.map((task) => (
                         <tr
                             key={task._id}
@@ -196,9 +175,6 @@ export default function TableTask({ tasks }: Prop) {
                             onDragOver={handleDragOver}
                             onDragLeave={handleDragLive}
                             onDrop={(e) => handleDrop(e, task)}
-                            onTouchStart={(e) => handleTouchStart(e, task)}
-                            onTouchMove={handleTouchMove}
-                            onTouchEnd={(e) => handleTouchEnd(e, task)}
                             className="text-[13px] transition-transform duration-300 ease-in-out border-b-[1px] bg-white hover:bg-gray-100 dark:bg-gray-800 dark:text-white dark:hover:bg-gray-700"
                         >
                             <td className="px-2 min-w-[200px] py-2 flex items-center space-x-2 font-s relative">
@@ -228,6 +204,7 @@ export default function TableTask({ tasks }: Prop) {
                                         setEditValue(task.name);
                                     }}
                                 >
+
                                     <CiEdit className=" dark:text-black" title="Rename" />
                                 </span>
                             </td>
