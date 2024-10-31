@@ -80,12 +80,13 @@ export default function UseUsers() {
     }, 1500)
   };
 
-  const createUser = async (user: UserSignUp) => {
+  const createUser = async (user: UserSignUp, hendeleFinish: () => void) => {
     try {
       const response = await axios.post(`${BASEURL}createUser`, user, { withCredentials: true });
       if (response.data.isSuccessful) {
         dispatch(addUser(response.data.data))
         successFromServer(response.data.displayMessage)
+        hendeleFinish();
       }
     } catch (err) {
       if (axios.isAxiosError(err))
