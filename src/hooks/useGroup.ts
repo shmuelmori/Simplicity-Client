@@ -19,8 +19,8 @@ export default function useGroup() {
                 setGroup(response.data.data);
         } catch (err) {
             if (axios.isAxiosError(err))
-                errorFromServer(err.response?.data.displayMessage)
-            setGroup([]);
+                // errorFromServer(err.response?.data.displayMessage)
+                setGroup([]);
         }
     }
 

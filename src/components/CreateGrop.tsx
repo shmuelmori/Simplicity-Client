@@ -3,6 +3,7 @@ import InputField from './InputField';
 import ReactDOM from 'react-dom';
 import useGroup from '../hooks/useGroup';
 import { motion } from 'framer-motion';
+import createImg from '../assets/create-pro-gro.png'
 
 type Props = {
     setCreateGroupPopupOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -41,7 +42,7 @@ export default function CreateGroup({ setCreateGroupPopupOpen, projectId }: Prop
     };
 
     return ReactDOM.createPortal(
-        <div className="flex items-center justify-center min-h-screen w-full bg-black bg-opacity-50 p-4 fixed top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[50%]">
+        <div className="flex items-center z-[1000] justify-center min-h-screen w-full bg-black bg-opacity-50 p-4 fixed top-1/2 left-1/2 transform -translate-x-[50%] -translate-y-[50%]">
             <motion.div
                 className="bg-white p-6 rounded-xl shadow-lg w-full max-w-[300px] border border-gray-300 relative dark:text-white dark:bg-gray-800"
                 initial={{ y: -100, opacity: 0 }}
@@ -52,7 +53,7 @@ export default function CreateGroup({ setCreateGroupPopupOpen, projectId }: Prop
                     onSubmit={handleSubmit}
                 >
                     <div
-                        className="absolute top-0 right-0 m-2 p-[1px] rounded-full text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 transition transform duration-200 cursor-pointer"
+                        className="absolute top-0 right-0 z-[1000] m-2 p-[1px] rounded-full text-gray-500 hover:text-gray-700 dark:hover:text-gray-200 transition transform duration-200 cursor-pointer"
                         onClick={() => { setCreateGroupPopupOpen(false) }}
                     >
                         <svg
@@ -67,6 +68,11 @@ export default function CreateGroup({ setCreateGroupPopupOpen, projectId }: Prop
                     </div>
 
                     <h1 className="text-2xl font-semibold text-center text-gray-800 mb-5 dark:text-white dark:bg-gray-800">Create Group</h1>
+
+                    <div className="flex items-center justify-center mb-2">
+                        <img src={createImg} alt="" />
+                    </div>
+
 
                     <div className="mb-4">
                         <InputField

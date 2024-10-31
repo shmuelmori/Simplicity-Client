@@ -80,13 +80,14 @@ export default function Groups({ projectId }: Props) {
                     </motion.div>
                 ))
             ) : (
-                <div className="text-gray-500 text-center py-4">אין קבוצות זמינות.</div>
+                <div className="text-gray-500 text-center py-4">No Groups available.</div>
             )}
             <div className='flex justify-center items-center mb-4 mt-2'>
                 <div className='text-lg font-bold'>Add group</div>
                 <button
                     onClick={() => setCreateGroupPopupOpen(true)}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold ml-2 py-1 px-2 rounded transition transform duration-300"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold
+                     ml-2 py-1 px-2 rounded transition transform duration-300"
                 >
                     +
                 </button>

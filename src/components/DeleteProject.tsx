@@ -8,15 +8,16 @@ import garbageImg from '../assets/garbage.png'
 interface DeleteProjectProps {
   selectedProject: IProject;
   onClose: () => void;
+  setCurrentProjects: React.Dispatch<React.SetStateAction<IProject[]>>
 }
 
-const DeleteProject: React.FC<DeleteProjectProps> = ({ selectedProject, onClose }) => {
+const DeleteProject: React.FC<DeleteProjectProps> = ({ selectedProject, onClose, setCurrentProjects }) => {
   const { _id } = selectedProject;
   const { deletProject } = UseProjects();
 
   const handleDelete = async () => {
     try {
-      await deletProject(_id);  // ניסיון למחוק את הפרויקט
+      await deletProject(_id, setCurrentProjects);  // ניסיון למחוק את הפרויקט
     } catch (error) {
       console.error("Error deleting project:", error);
     } finally {

@@ -14,11 +14,12 @@ export default function UseProjects() {
 
 
     // create project //
-    const createProject = async (newProject: NewProject) => {
+    const createProject = async (newProject: NewProject, setCurrentProjects: React.Dispatch<React.SetStateAction<IProject[]>>) => {
         try {
             const response = await axios.post(`${BASEURL}createProject`, newProject, { withCredentials: true });
             if (response.data.isSuccessful) {
-                dispatch(addProject(response.data.data))
+                dispatch(addProject(response.data.data));
+                setCurrentProjects((prevProjects) => [...prevProjects, response.data.data]);
                 successFromServer(response.data.displayMessage)
             }
         } catch (err) {
@@ -28,17 +29,24 @@ export default function UseProjects() {
     }
 
     //update project
-    const updateProjects = async (updateProject: NewProject) => {
+    const updateProjects = async (updatedProject: IProject, setCurrentProjects: React.Dispatch<React.SetStateAction<IProject[]>>
+    ) => {
         try {
-            const response = await axios.post(`${BASEURL}updateProject`, updateProject, { withCredentials: true });
+            const response = await axios.post(`${BASEURL}updateProject`, updatedProject, { withCredentials: true });
             if (response.data.isSuccessful) {
                 successFromServer(response.data.displayMessage);
+                setCurrentProjects((prevProjects) =>
+                    prevProjects.map((project) =>
+                        project._id === updatedProject._id ? response.data.data : project
+                    )
+                );
             }
         } catch (err) {
-            if (axios.isAxiosError(err))
-                errorFromServer(err.response?.data.displayMessage)
+            if (axios.isAxiosError(err)) {
+                errorFromServer(err.response?.data.displayMessage);
+            }
         }
-    }
+    };
 
 
     //get all projects
@@ -57,12 +65,14 @@ export default function UseProjects() {
     }
 
     //delete project
-    const deletProject = async (projectId: string) => {
+    const deletProject = async (projectId: string, setCurrentProjects: React.Dispatch<React.SetStateAction<IProject[]>>) => {
         try {
             const response = await axios.post(`${BASEURL}deleteProject`, { projectId }, { withCredentials: true });
             if (response.data.isSuccessful) {
                 successFromServer(response.data.displayMessage)
-
+                setCurrentProjects((prevProjects) =>
+                    prevProjects.filter((project) => project._id !== projectId)
+                );
             }
         } catch (err) {
             if (axios.isAxiosError(err))

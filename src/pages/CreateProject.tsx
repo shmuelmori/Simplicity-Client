@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom';
 import { NewProject } from '../utils/types';
 import { motion } from 'framer-motion';
+import createImg from '../assets/create-pro-gro.png'
 
 interface CreateProjectProps {
   onAddProject: (newProject: NewProject) => void;
@@ -54,6 +55,10 @@ const CreateProject: React.FC<CreateProjectProps> = ({ onAddProject, isOpen, onC
             >
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
+          </div>
+
+          <div className="flex items-center justify-center mb-2">
+            <img src={createImg} alt="" />
           </div>
 
           <div className="mb-4">

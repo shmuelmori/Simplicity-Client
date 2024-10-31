@@ -3,16 +3,16 @@ import { IProject } from '../utils/types';
 import InputField from './InputField';
 import UseProjects from '../hooks/UseProjects';
 import ReactDOM from 'react-dom';
-import editImg from '../assets/edit.png'
 import { motion } from 'framer-motion';
-
+import updateImg from '../assets/update.png';
 
 type Prop = {
   data: IProject,
   setPopUpdate: (value: React.SetStateAction<boolean>) => void;
+  setCurrentProjects: React.Dispatch<React.SetStateAction<IProject[]>>
 }
 
-const UpdateProjects = ({ data, setPopUpdate }: Prop) => {
+const UpdateProjects = ({ data, setPopUpdate, setCurrentProjects }: Prop) => {
   const { updateProjects } = UseProjects()
   const [project, setProject] = useState<IProject>({
     _id: data._id,
@@ -38,7 +38,7 @@ const UpdateProjects = ({ data, setPopUpdate }: Prop) => {
   }
 
   const handleSubmit = () => {
-    updateProjects(project);
+    updateProjects(project, setCurrentProjects);
     setPopUpdate(false);
   }
 
@@ -66,10 +66,11 @@ const UpdateProjects = ({ data, setPopUpdate }: Prop) => {
             </svg>
           </div>
 
+
           <h1 className="text-2xl font-semibold text-center text-gray-800 mb-5 dark:bg-gray-800 dark:text-white">Update Project</h1>
 
           <div className="flex items-center justify-center mb-2">
-            <img src={editImg} alt="" />
+            <img src={updateImg} alt="" />
           </div>
 
           <div className="mb-4 text-black">

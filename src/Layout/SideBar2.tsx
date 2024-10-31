@@ -24,6 +24,7 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
   const [selectedProject, setSelectedProject] = useState<IProject | null>(null);
   const [popUpdate, setPopUpdate] = useState(false);
   const [data, setData] = useState(projectList[0]);
+  const { createProject } = UseProjects();
   //const dispatch = useDispatch();
 
   const [currentProjects, setCurrentProjects] = useState(projectList);
@@ -33,7 +34,6 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
     setCurrentProjects(projectList);
   }, [projectList])
 
-  const { createProject } = UseProjects();
 
   const handleToggleGroup = (projectId: string) => {
     setExpandedProjectId(prevId => prevId === projectId ? null : projectId);
@@ -71,13 +71,6 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
 
   const handleDragOver = (e: React.DragEvent<HTMLElement>) => {
     e.preventDefault();
-    const targetElement = e.currentTarget;
-    targetElement.style.borderBottom = '2px solid blue';
-  };
-
-  const handleDragLive = (e: React.DragEvent<HTMLElement>) => {
-    const targetElement = e.currentTarget;
-    targetElement.style.borderBottom = '1px solid #F3F4F6';
   };
 
   const handleDrop = (e: React.DragEvent<HTMLElement>, targetProject: IProject) => {
@@ -94,9 +87,6 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
 
     setCurrentProjects(newProjects);
     //dispatch(setProject(newProjects));
-
-    const targetElement = e.currentTarget;
-    targetElement.style.borderBottom = '1px solid #F3F4F6';
   };
 
   return (
@@ -124,7 +114,6 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
               onDragStart={(e) => handleDragStart(e, project)}
               onDragEnd={handleDragEnd}
               onDragOver={handleDragOver}
-              onDragLeave={handleDragLive}
               onDrop={(e) => handleDrop(e, project)}
             >
               <div className='bg-gray-800 px-1 py-2 rounded-lg flex items-center justify-between hover:bg-gray-900 transition duration-200'>
@@ -161,15 +150,15 @@ const SideBar2: React.FC<SideBar2Props> = ({ projectList, viewProjects }) => {
         isOpen={isPopupOpen}
         onClose={() => setIsPopupOpen(false)}
         onAddProject={(newProject: NewProject) => {
-          createProject(newProject);
+          createProject(newProject, setCurrentProjects);
           setIsPopupOpen(false);
         }}
       />
 
       {deletePopUp && selectedProject && (
-        <DeleteProject selectedProject={selectedProject} onClose={closeDeletePopup} />
+        <DeleteProject selectedProject={selectedProject} onClose={closeDeletePopup} setCurrentProjects={setCurrentProjects} />
       )}
-      {popUpdate && (<UpdateProjects setPopUpdate={setPopUpdate} data={data} />)}
+      {popUpdate && <UpdateProjects setPopUpdate={setPopUpdate} data={data} setCurrentProjects={setCurrentProjects} />}
     </aside>
   );
 };
