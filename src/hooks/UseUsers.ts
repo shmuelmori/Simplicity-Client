@@ -17,7 +17,7 @@ export default function UseUsers() {
 
   const updateUser = async (user: UserUpdate) => {
     try {
-      const response = await axios.patch(`${BASEURL}updateUser`, user, { withCredentials: true });
+      const response = await axios.post(`${BASEURL}updateUser`, user, { withCredentials: true });
       if (response.data.isSuccessful) {
         successFromServer(response.data.displayMessage);
         dispatch(initialUsers());
@@ -25,6 +25,9 @@ export default function UseUsers() {
     } catch (err) {
       if (axios.isAxiosError(err))
         errorFromServer(err.response?.data.displayMessage)
+
+      console.log(err);
+
     }
   };
 
