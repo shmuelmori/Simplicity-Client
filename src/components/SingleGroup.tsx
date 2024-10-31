@@ -19,14 +19,14 @@ export default function SingleGroup({ group, onEdit, onDelete }: Prop) {
             <span className='flex items-center'>{group.name}</span>
             <span className='flex items-center'>
                 <p
-                    className='p-[2px] mr-1 hover:text-2xl rounded-lg transition duration-300 cursor-pointer'
+                    className="p-[2px] mr-1 rounded-lg transition transform hover:scale-110 duration-500 cursor-pointer"
                     onClick={onEdit}
                 >
-                    <LiaEdit className="hover:text-green-500"/>
+                    <LiaEdit className="hover:text-green-500" />
                 </p>
                 <p
-                    className='p-[2px] mr-1 hover:text-2xl rounded-lg transition duration-300 cursor-pointer'
-                onClick={onDelete}
+                    className="p-[2px] mr-1 rounded-lg transition transform hover:scale-110 duration-500 cursor-pointer"
+                    onClick={onDelete}
                 >
                     <RiDeleteBin7Line className="hover:text-red-500" />
                 </p>

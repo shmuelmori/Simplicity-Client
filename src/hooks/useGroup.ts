@@ -27,9 +27,10 @@ export default function useGroup() {
     // Update Group //
     const updateGroup = async (group: UpdateGroupType) => {
         try {
-            const response = await axios.patch(`${BASEURL}updateGroup/${group._id}`, group, { withCredentials: true });
+            const response = await axios.post(`${BASEURL}updateGroup/${group._id}`, group, { withCredentials: true });
             if (response.data.isSuccessful) {
                 successFromServer(response.data.displayMessage);
+
             }
         } catch (err) {
             if (axios.isAxiosError(err)) {

@@ -42,7 +42,7 @@ const Side: React.FC<SideProps> = ({ isOpen }) => {
     <>
       {/* התפריט הראשי */}
       <aside
-        className={`fixed top-0 right-0 z-50 w-[150px] h-full bg-black text-white p-4 transform transition-transform duration-300 ease-in-out flex flex-col justify-between ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`fixed top-0 right-0 z-40 w-[150px] h-full bg-black text-white p-4 transform transition-transform duration-300 ease-in-out flex flex-col justify-between ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}
         style={{ zIndex: 1000 }}
       >
         {/* לוגו */}
