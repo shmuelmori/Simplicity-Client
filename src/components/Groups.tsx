@@ -102,6 +102,7 @@ export default function Groups({ projectId }: Props) {
             )}
             {isCreateGroupPopupOpen && (
                 <CreateGroup
+                    setGroups={setGroups}
                     setCreateGroupPopupOpen={setCreateGroupPopupOpen}
                     projectId={projectId}
                 />

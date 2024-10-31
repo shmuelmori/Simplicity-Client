@@ -4,8 +4,10 @@ import ReactDOM from 'react-dom';
 import useGroup from '../hooks/useGroup';
 import { motion } from 'framer-motion';
 import createImg from '../assets/create-pro-gro.png'
+import { IGroup } from '../utils/types';
 
 type Props = {
+    setGroups: React.Dispatch<React.SetStateAction<IGroup[]>>
     setCreateGroupPopupOpen: React.Dispatch<React.SetStateAction<boolean>>;
     projectId: string;
 };
@@ -16,7 +18,7 @@ type groupType = {
     projectId: string;
 };
 
-export default function CreateGroup({ setCreateGroupPopupOpen, projectId }: Props) {
+export default function CreateGroup({ setGroups, setCreateGroupPopupOpen, projectId }: Props) {
     const { createGroup } = useGroup();
 
     const [group, setGroup] = useState<groupType>({
@@ -37,7 +39,7 @@ export default function CreateGroup({ setCreateGroupPopupOpen, projectId }: Prop
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        createGroup(group);
+        createGroup(group, setGroups);
         setCreateGroupPopupOpen(false);
     };
 

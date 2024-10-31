@@ -39,11 +39,12 @@ export default function useGroup() {
         }
     }
     // Create Group //
-    const createGroup = async (newGroup: groupType) => {
+    const createGroup = async (newGroup: groupType, setGroups: React.Dispatch<React.SetStateAction<IGroup[]>>) => {
         try {
             const response = await axios.post(`${BASEURL}createGroup`, newGroup, { withCredentials: true });
             if (response.data.isSuccessful) {
                 successFromServer(response.data.displayMessage);
+                setGroups((prev) => [...prev, response.data.data]);
             }
         } catch (err) {
             if (axios.isAxiosError(err)) {

@@ -79,6 +79,16 @@ const Side: React.FC<SideProps> = ({ isOpen }) => {
           >
             About Us
           </NavLink>
+
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              isActive
+                ? 'text-green-400 border-b-2 border-green-400'
+                : 'hover:text-green-400 hover:border-b-2 hover:border-green-400 transition-colors duration-200'}
+          >
+            Profile
+          </NavLink>
         </div>
 
         {/* כפתור התנתקות בתחתית */}

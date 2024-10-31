@@ -119,7 +119,6 @@ export default function useTask() {
         } catch (err) {
             if (axios.isAxiosError(err))
                 console.log(err);
-
         }
     };
 
@@ -136,8 +135,23 @@ export default function useTask() {
         }
     };
 
+    const getTasksByUser = async (userId: string) => {
+        try {
+            const response = await axios.get(`${BASEURL}getTaskByUser/${userId}`, { withCredentials: true });
+            if (response.data.isSuccessful) {
+                const tasks: ITask[] = response.data.data;
+                dispatch(setTasks(tasks));
+            }
+        } catch (err) {
+            if (axios.isAxiosError(err)) {
+                errorFromServer(err.response?.data.displayMessage);
+            }
+        }
+    };
 
-    return { createTask, updateTaskGeneric, deleteTask, assignTaskToUser, getTaskByUser, getUsersWithTask, searchTask }
+
+
+    return { createTask, updateTaskGeneric, deleteTask, assignTaskToUser, getTaskByUser, getUsersWithTask, searchTask, getTasksByUser }
 }
 
 

@@ -12,6 +12,7 @@ import NumberInputForm from './pages/NumberInputForm';
 import SendEmailOtp from './components/SendEmailOtp';
 import TaskPage from './pages/TaskPage';
 import AboutUs from './pages/AboutUs';
+import Profile from './pages/Profile';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -31,7 +32,7 @@ function App() {
           <Route path='/users' element={<MainContent />} />
           <Route path='/task/:id' element={<TaskPage />} />
           <Route path='/about' element={<AboutUs />} />
-          <Route path='/profile' element={<div>Profile Page</div>} />
+          <Route path='/profile' element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
