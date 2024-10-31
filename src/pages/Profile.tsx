@@ -94,7 +94,9 @@ const Profile = () => {
                                 />
                             ) : (
                                 <div className="w-40 h-40 sm:w-24 sm:h-24 rounded-full object-cover border-4 border-primary mt-10 sm:mt-2">
-                                    👤
+                                    <img
+                                        src="https://p.kindpng.com/picc/s/38-386443_transparent-workout-silhouette-png-front-female-head-silhouette.png"
+                                        alt="Profile" />
                                 </div>
                             )}
                         </motion.div>
