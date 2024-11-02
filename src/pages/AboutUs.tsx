@@ -7,6 +7,10 @@ import {
     FiTwitter,
     FiInstagram
 } from 'react-icons/fi';
+import imgMendel from '../assets/mendel.jpg'
+import imgMenush from '../assets/menoshjpg.jpg'
+import imgShmuel from '../assets/shmueljpg.jpg'
+
 
 const AboutUs = () => {
     const features = [
@@ -34,19 +38,19 @@ const AboutUs = () => {
 
     const teamMembers = [
         {
-            name: "Sarah Johnson",
+            name: "Menachem Mendel Cohen",
             role: "Founder & CEO",
-            image: "https://cdn.pixabay.com/photo/2016/12/09/09/52/girl-1894125_640.jpg"
+            image: imgMendel
         },
         {
-            name: "Mike Chen",
+            name: "Shmuel Mori",
             role: "Lead Developer",
-            image: "https://d3i6fh83elv35t.cloudfront.net/static/2023/12/GettyImages-1235088525-e1701630599313-1024x686.jpg"
+            image: imgShmuel
         },
         {
-            name: "Emma Davis",
-            role: "UX Designer",
-            image: "https://i0.wp.com/picjumbo.com/wp-content/uploads/fashion-portrait-of-young-black-man-with-glasses-blue-mood-free-image.jpeg?h=800&quality=80"
+            name: "Menachem Mendel",
+            role: "DevOps Developer",
+            image: imgMenush
         }
     ];
 
