@@ -27,3 +27,17 @@ export const successFromServer = (message: string) => {
         position: "top-center",
     });
 };
+
+export const brainMessage = (message: string) => {
+    toast.success(message, {
+        duration: 4000,
+        id: 'successMessage',
+        position: "top-center",
+        style: {
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            textAlign: 'center',
+        },
+    });
+};

@@ -73,6 +73,7 @@ export default function Groups({ projectId }: Props) {
                         transition={{ delay: 0.2 * index }}
                     >
                         <SingleGroup
+                            projectId={projectId}
                             group={group}
                             onEdit={() => handleEditGroup(group._id)}
                             onDelete={() => handleDeleteGroup(group._id)}

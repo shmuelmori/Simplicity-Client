@@ -1,19 +1,25 @@
 import { IGroup } from "../utils/types";
 import { LiaEdit } from "react-icons/lia";
 import { RiDeleteBin7Line } from "react-icons/ri";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { setProject } from "../redux/slices/projectSlice";
 
 type Prop = {
+    projectId: string
     group: IGroup;
     onEdit: () => void; // פונקציה לעריכת הקבוצה
     onDelete: () => void; // פונקציה למחיקת הקבוצה
 }
 
-export default function SingleGroup({ group, onEdit, onDelete }: Prop) {
+export default function SingleGroup({ group, onEdit, onDelete, projectId }: Prop) {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
+
     return (
         <div className='bg-gray-600 px-2 py-2 my-1 cursor-pointer rounded-lg flex items-center justify-between hover:bg-gray-900 transition duration-200'
             onClick={() => {
+                dispatch(setProject(projectId))
                 navigate(`/task/${group._id}`)
             }}>
             <span className='flex items-center'>{group.name}</span>

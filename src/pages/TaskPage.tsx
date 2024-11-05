@@ -9,9 +9,9 @@ import CreateTask from "../components/CreateTask";
 import ButtonExport from "../components/ButtonExport";
 import Loading from "../components/Loading";
 import useTask from "../hooks/useTask";
+import Ai from "../components/Ai";
 
 export default function TaskPage() {
-
     const dispatch = useDispatch<AppDispatch>();
     const { id } = useParams<{ id: string }>();
     const tasks = useSelector((state: RootState) => state.tasks.tasks);
@@ -36,6 +36,8 @@ export default function TaskPage() {
             <div className="flex w-[80%] justify-center p-4 text-2xl font-bold text-gray-600 dark:text-white">
                 {tasks.length} Tasks active
             </div>
+
+            <Ai />
 
             <div className="w-[90%] flex items-center justify-center mb-4 space-x-2 sm:space-x-4">
                 <div className="flex">

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { NeuralNetwork } from 'brain.js';
 import data from './data.json';
+import { brainMessage } from '../utils/toast';
 
 interface Task {
     duration: number;
@@ -95,7 +96,9 @@ async function main(projectId: string): Promise<string> {
     return `The project has approximately ${remainingDays} days remaining`;
 }
 
-export async function runPrediction(projectId: string) {
+export async function runPrediction(projectId: string | null) {
+    if (!projectId) return "We got problem!";
+
     const predictionMessage = await main(projectId);
-    return predictionMessage;
+    brainMessage(predictionMessage)
 }
