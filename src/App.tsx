@@ -13,6 +13,7 @@ import SendEmailOtp from './components/SendEmailOtp';
 import TaskPage from './pages/TaskPage';
 import AboutUs from './pages/AboutUs';
 import Profile from './pages/Profile';
+import { runPrediction } from './brain/brain';
 
 function App() {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,6 +21,12 @@ function App() {
   useEffect(() => {
     dispatch(initialUser());
   }, [dispatch]);
+
+  (async () => {
+    const massege = await runPrediction('6723cabddad844449fab895d');
+    console.log(massege);
+  })();
+
 
   return (
     <BrowserRouter>

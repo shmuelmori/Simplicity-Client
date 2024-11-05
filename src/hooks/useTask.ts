@@ -118,7 +118,7 @@ export default function useTask() {
             }
         } catch (err) {
             if (axios.isAxiosError(err))
-                console.log(err);
+                console.log();
         }
     };
 
