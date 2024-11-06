@@ -15,7 +15,7 @@ export default function Ai() {
                 setOpenAi(false);
             }, 3000)
         }
-    }, [openAi])
+    }, [openAi, projectId])
 
 
     return (
