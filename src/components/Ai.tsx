@@ -31,7 +31,7 @@ export default function Ai() {
                     className={`ml-10 w-10 h-10 sm:w-16 sm:h-16 ${!openAi ? 'bg-gradient-to-r from-blue-300 via-purple-500 to-pink-500' : 'bg-gray-300'}
                  shadow-lg ${!openAi && 'shadow-blue-400'} rounded-full flex justify-center items-center text-2xl font-serif cursor-pointer z-[1000]`}
                 >
-                    AI
+                    I
                 </motion.div>
             </div>
         </>
